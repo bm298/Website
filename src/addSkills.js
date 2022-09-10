@@ -2,8 +2,8 @@ import './App.css';
 
 export default [
 {
-    skillPic: 'logo192.png',
-    skillName:"logo192",
+    skillPic: 'cssInSrc.png',
+    skillName:"CssInSrc",
 },
 {
     skillPic: 'css.png',
