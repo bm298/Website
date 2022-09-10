@@ -1,0 +1,195 @@
+.navBarItemsMobile{
+    display: none;
+}
+
+.hamburgerMenu{
+    display: none;
+}
+
+@media (max-width: 450px ){
+
+    /* For Mobile */
+
+    /* background for Mobile  */
+    body{
+        background: linear-gradient(-45deg,#ee7752, #e73c7e, #23a6d5, #c213e1);
+        background-size: 1500% 1500%;
+        animation: gradient 15s ease infinite;
+    }
+    
+    
+    .container{
+        display: block;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .contentContainer{
+        display: flex;
+        flex-direction: column;
+    }
+ 
+    .navBar{
+        z-index: 1;
+    }
+
+    .bm{
+        display: none;
+    }
+
+    .hamburgerMenu{
+        display: flex;
+        font-size: 2rem;
+        margin-left: 2rem;
+        padding: 2px;
+        border: 2px solid white;
+        cursor: pointer;
+        position: fixed;
+        z-index: 2;
+    }
+
+    .navBarItemsMobile{
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        position:fixed;
+        right: 0;
+        left: 0;
+        top:0;
+        padding: 0;
+        margin: 0;
+        background-color: rgba(45, 40, 40, 1);
+        min-height: 100%;
+        z-index: 1;
+    }
+
+    .eachNavMobile{
+        margin: 10% 0;
+        font-size: 1.2rem;
+        padding: 5%;
+        background:
+        linear-gradient(currentColor 0 0) top,
+        linear-gradient(currentColor 0 0) left,
+        linear-gradient(currentColor 0 0) bottom,
+        linear-gradient(currentColor 0 0) right;
+      background-size: var(--d, 0) 1.5px, 0px var(--d, 0);
+      background-repeat: no-repeat;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+      .eachNavMobile:hover {
+        --d: 100%;
+      }
+      
+
+/* content Section */
+
+.content2 {
+    justify-content: center;
+}
+
+.heroSiteImg {
+    width:90%;
+
+}
+
+/* About section */
+.typedAbout {
+    font-size: 1.5rem;
+}
+
+#aboutInfo {
+    font-size: 1.25rem;
+}
+
+#aboutText{
+
+}
+
+/* Skills section */
+
+#techStackText{
+
+}
+
+.totalSkills{
+    justify-content: center;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+}
+
+.eachSkill {
+    width:inherit;
+    height:inherit;
+}
+
+/* portfolio section */
+
+
+.eachProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eachProjectClose {
+    display: none;
+}
+
+
+.portfolioImages:hover {
+    transform: scale(1.5);
+    border-radius: 10px;
+}
+
+#portfolioBoxes{
+}
+
+
+/* footer section */
+
+.footer {
+    display:inherit
+}
+
+#contactMeText{
+
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: rgba(0, 0, 0, 0) 0px 5px;
+    margin-top: 0; 
+    padding:1rem;
+}
+
+.InputName {
+font-size: inherit;
+}
+.InputEmail {
+    font-size: inherit;
+}
+.InputSubject {
+    font-size: inherit;
+}
+textarea {
+    font-size: inherit;
+}
+
+.formErrors {
+    font-size: 0.9rem;
+    height: 1rem;
+}
+
+
+
+    /* For Desktop */
+    .navBarItems{
+        display: none;
+    }
+}
