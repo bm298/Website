@@ -17,9 +17,6 @@ import userEvent from '@testing-library/user-event';
 import NavBar from './navBar';
 
 
-
-
-
 function App() {
 
   const [isShown, setIsShown] = React.useState(false);
@@ -116,9 +113,7 @@ setIsSubmit(true)
 setFormErrors(validate(formData))
 e.target.reset()
   }
-
 }
-
 
 function validate (values){
   const errors= {}
@@ -224,7 +219,7 @@ return errors
                   loop
                   />
               </div>
-             <p id='aboutInfo'> I am a passionate front end web developer based in the U.K,
+             <p id='aboutInfo'> I am a passionate front end web developer based in the UK,
              that's focused on creating high quality, eye-catching web applications,
              offering a seamless end user experience.</p>
             </div>

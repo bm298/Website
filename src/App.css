@@ -31,6 +31,8 @@ body{
 .container{
 display: grid;
 justify-content: center;
+  width: 1200px;
+  margin: auto;
 }
 
 
@@ -257,7 +259,7 @@ z-index: -1;
 
 .eachProject{
   margin-top: 2.5rem;
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-evenly;
   grid-gap: 8rem;
