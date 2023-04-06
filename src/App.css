@@ -1,53 +1,55 @@
+
 * {
   text-align: center;
   box-sizing: border-box;
   color: white;
-}
+  margin: 0;
+} 
 
 html, body{
-  width: 100%;
-  height:100%;
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
-
-body{
-    background: linear-gradient(-45deg,#ee7752, #e73c7e, #23a6d5, #c213e1);
-    background-size: 1000% 1000%;
-    animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.container{
-display: grid;
-justify-content: center;
-  width: 1200px;
-  margin: auto;
-}
-
 
 .navBar{
-/* grid-column: 1/3; */
+position: fixed;
+top: 0;
 display: grid;
+padding: 15px;
 grid-template-columns: 1fr 2fr 1fr;
-/* justify-content: center; */
 align-items: center;
-margin-bottom: 1rem;
-margin-top: 1rem;
+z-index: 1;
+width: 100%;
+transition: all 0.6s ease-in-out;
+}
+
+.navBarScroll{
+position: fixed;
+top: 0;
+display: grid;
+padding: 15px;
+grid-template-columns: 1fr 2fr 1fr;
+background-color: white;
+align-items: center;
+z-index: 1;
+width: 100%;
+transition: all 0.3s ease-in-out;
 }
 
 .bm{
-  font-size: 1.8rem;
+  justify-content: center;
+  font-size: 1.5rem;
+  display: flex;
+}
+
+.bmH3Scroll{
+  justify-content: center;
+  color: black;
+}
+
+.bm > span{
+  align-items: flex-end;
+  display: flex;
+  margin-bottom: 0.5px;
 }
 
 a{
@@ -60,60 +62,97 @@ a{
   list-style-type: none;
   gap:3rem;
   justify-content: center;
-  font-size: 1.5rem;
-
+  font-size: 1rem;
+  font-weight: 500;
 }
- 
 
 .eachNav{
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   background:
-    linear-gradient(currentColor 0 0) top,
-    linear-gradient(currentColor 0 0) left,
-    linear-gradient(currentColor 0 0) bottom,
-    linear-gradient(currentColor 0 0) right;
+  linear-gradient(currentColor 0 0) top,
+  linear-gradient(currentColor 0 0) left,
+  linear-gradient(currentColor 0 0) bottom,
+  linear-gradient(currentColor 0 0) right;
   background-size: var(--d, 0) 1.5px, 1.5px var(--d, 0);
   background-repeat: no-repeat;
   transition: 0.5s;
-  
 }
 .eachNav:hover {
   --d: 100%;
 }
 
+.eachNavScroll{
+  color: black;
+  padding: 0.5rem 1.2rem;
+  background:
+  linear-gradient(currentColor 0 0) top,
+  linear-gradient(currentColor 0 0) left,
+  linear-gradient(currentColor 0 0) bottom,
+  linear-gradient(currentColor 0 0) right;
+  background-size: var(--d, 0) 1.5px, 1.5px var(--d, 0);
+  background-repeat: no-repeat;
+  transition: 0.5s;
+}
+.eachNavScroll:hover {
+  --d: 100%;
+}
+
+
+.container{
+  justify-content: center;
+  width: 100%;
+}
+  
+
 .contentContainer{
-display: grid;
-grid-template-columns: 1fr 1fr;
-font-size: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 /******* Hero/Content Section********/
 
 .content1{
+  background-color: rgb(32 32 32 / 95%);
+  height: 20rem;
+  width: 30rem;
   display: flex;
+  border-radius: 10px;
   flex-direction: column;
   justify-content: center;
-  align-items: center
 }
 
-.content2{
-  display: flex;
-  justify-content: flex-end;
-
+.content1 > h2{
+  margin: 1rem 0;
 }
 
-.heroSiteImg{
-margin-top: 5rem;
-width:34rem;
-border-radius: 10px 100px;
-overflow: hidden;
-opacity: 0.9;
-box-shadow: rgba(208, 27, 27, 0.486) 0px 8px 24px;
+.contentTyped{
+font-size: 2rem;
+font-weight: 500;
+height:7rem;
+}
+
+.contactMeBtnContainer{
+margin-top: 1.5rem;
+}
+
+
+.backgroundOverlay{
+    height: 100vh;
+    width: 100%;
+    background-position-y:bottom;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    background-image: url(hero3.jpg);   
 }
 
 #heroName{
 font-size: 3rem;
-color:gold;
+color:#ffd700;
+font-weight: 600;
 }
 
 .contactMeHero{
@@ -122,11 +161,10 @@ font-size: 1.2rem;
 border-radius: 0.5rem;
 color:gold ;
 padding: 0.6rem;
-background-color: black;
+background-color: rgba(0, 0, 0, 1);
 border: 3px solid gold;
 cursor: pointer;
 box-shadow: inset 0 0 0 0 grey;
-/* box-shadow: inset 0px 5px 15px 0px rgba(0, 0, 0, 0.35); */
 transition: ease-out 0.5s;
 }
 
@@ -135,79 +173,96 @@ transition: ease-out 0.5s;
   border: 3px solid black;
   color: black;
   font-weight: bold;
-  /* box-shadow:inset 100% 5px 15px 0px rgba(0, 0, 0, 0.35); */
 }
 
 
 /******* About Section********/
-.aboutSquare{
+
+.aboutContainer{
+  padding: 2rem 5rem;
+  background-color: rgba(115, 118, 135, 0.5);
+}
+
+.about{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
 }
 
 #aboutText{
   color:white;
-  font-size: 3.5rem;
-}
-
-.square{
-z-index: -1;
-  width: 10rem;
-  height: 10rem;
-  position: absolute;
-  fill:orange;
-  opacity: 0.3;
-}
-
-.typed{
-  margin-top: 2.5rem;
-}
-
-.typedAbout{
-  font-size: 2rem;
-  font-family: 'Mv Boli',sans-serif;
+  font-size: 3rem;
+  border-bottom:3px solid #ffd700;
 }
 
 #aboutInfo{
-  text-align: center;
-  font-size: 1.75rem;
-  display: flex;
-  max-width:fit-content;
+  text-align: left;
+  color:#363036;
+}
 
+.aboutInfoContainter{ 
+display: flex;
+max-width: 1400px;
+margin: 4rem auto;
+}
+
+.about40{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  border-right: 2px solid white;
+}
+
+.picContainer{
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  width: 100%;
+  margin-right: 5rem;
+  align-items: center;
+}
+
+#programmingPic{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.about60{
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 0 5rem;
 }
 
 /**** Tech Stack ****/
+
+.skillsContainer{
+  background-color:  #363036;
+  padding: 3rem 0 5rem
+}
  
-.skillsCircleTotal{
+.skillsTotal{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7rem;
-}
-
-.faCircle{
-z-index: -1;
-  width: 10rem;
-  height: 10rem;
-  position: absolute;
-  fill:lightblue;
-  opacity: 0.3;
 }
 
 #techStackText{
   color:white;
-  font-size: 3.5rem;
+  font-size: 3rem;
+  border-bottom: 3px solid #ffd700;
 }
 
 .totalSkills{
   display: flex;
   justify-content: space-around;
-  margin-top: 2.5rem;
-
+  margin-top: 4rem;
 }
 
 .skills{
@@ -217,145 +272,322 @@ grid-gap: 4rem;
 }
 
 .eachSkill{
-  width: 16rem;
-  height: 16rem;
+  width: 13rem;
+  height: 12rem;
   border-radius: 20px;
   padding-top: 2.5rem; 
   font-size: 1.5rem;
   display: grid;
   grid-template-columns: 1fr;
-  box-shadow: 0px 1px 3px #363036;
-  background-color:#363036;
+  border: 2px solid #ffd700 ;
+  color: black;
+  transition: all 0.5s ease-in-out;
+  }
+
+  .eachSkill:hover{
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 2px 15px #ffd700;
+    transform: rotate(0.1turn);
   }
   
   .cardSkill{
   height: 5rem;
   margin: auto;
-  background-color:#363036;
   }
 
+
 /******* Portfolio Section********/
+
+.portfolioContainer{
+  background-color: rgba(115, 118, 135, 0.5);
+  padding: 3rem 0 5rem;
+}
+
 .portfolio{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
 }
 
 #portfolioText{
   color:white;
-  font-size: 3.5rem;
-}
-
-.triangle{
-z-index: -1;
-  width: 11rem;
-  height: 11rem;
-  position: absolute;
-  fill:lightgreen;
-  opacity: 0.3;
+  font-size: 3rem;
+  border-bottom: 3px solid #ffd700;
 }
 
 .eachProject{
-  margin-top: 2.5rem;
-  display: flex;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-evenly;
-  grid-gap: 8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    grid-gap: 5rem;
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 0 20px;
 }
 
 #portfolioBoxes{
   position: relative;
   display: flex;
-justify-content: center;
-/* border: 5px solid rgba(0, 0, 0, 0.563); */
-box-shadow: 5px 5px 15px #363036;
-border-radius: 10px;
-background-color: white;
-padding: 0.6rem;
-width: 20rem;
-height:18rem;
-}
-
-.portfolioBoxesTitle{
-  position:absolute;
-background-color: rgba(255, 0, 0, 0.532);
-color:white;
-font-weight: bold;
-top:8rem;
-left:4.5rem;
-right:4.5rem;
-bottom: 8rem;
-padding: 0.3rem;
-transition: ease-out 1s;
-}
-
-.portfolioBoxesTitleClear{
-background-color: rgba(255, 0, 0, 0);
-color:rgba(255, 255, 255, 0);
+  justify-content: center;
+  border-radius: 10px;
+  max-width: 26rem;
+  height:23rem;
 }
 
 .portfolioImages{
   height: 100%;
-  transition: ease-in-out 0.5s;
+  width: 100%;
+  border-radius: 10px;
   cursor: pointer;
+  filter: brightness(0.9);
+  object-fit: cover;
 }
 
-.portfolioImages:hover {
-transform: scale(2);
-border-radius: 10px;
+/* portfolioBoxesoverlay non hover */
+.portfolioBoxesOverlay{
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  bottom: 0;
+  overflow: hidden;
+  height: 2rem;
+  width: 100%;
+  transition: all ease-in-out 0.5s;
+  display: grid;
+ }
+
+ .portfolioBoxesOverlay >h2{
+  margin: auto;
+  width: 55%;
+  border-radius: 90px 90px 0px 0px;
+  transition: all 0.5s ease-out;
+  background-color:  rgb(54, 48, 54, 0.9);
+} 
+
+.portfolioBoxesOverlay >p{
+  font-size: 0.9rem;
+  font-weight: 300;
+  text-align: left;
 }
+/* End of portfolioBoxesoverlay non hover */
+
+
+/* .portfolioBoxesOverlay on hover */
+.portfolioBoxesOverlay:hover{
+  transition: all ease-in-out 0.5s;
+  border-radius: 10px;
+}
+/* end of portfolioBoxesOverlay on hover */
+
+
+/* portfolioBoxes on hover */
+  #portfolioBoxes:hover .portfolioBoxesOverlay{
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(56, 55, 55, 0.95);
+    transition: all 0.5s ease-in-out;
+    display: grid;
+    padding: 0 20px;
+  }
+
+  #portfolioBoxes:hover .portfolioBoxesOverlay >h2{
+    background-color: rgba(255, 0, 0, 0);
+    border-radius: none;
+    transition: all 0.5s ease-in;
+  } 
+  /* End of portfolioBoxes on hover */
+  
+
+  /* Buttons effect */
+
+  /* Buttons non hovered */
+  .liveCode{
+    width: 9rem;
+    padding: 10px 25px;
+    background-color: inherit;
+    color: rgb(255, 106, 0);
+    border: 1px solid rgb(255, 106, 0);
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    opacity: 0.7;
+  }
+
+  .liveSite {
+    width: 9rem;
+    padding: 10px 25px;
+    margin-left: 15px;
+    background-color: rgb(255, 106, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    opacity: 0.7;
+  }
+  /* Enf of Buttons non hovered */
+
+  /* Buttons when portfolioBoxes hovered=when card swiped up */
+  #portfolioBoxes:hover .liveCode{
+  width: 9rem;
+  padding: 10px 25px;
+  background-color: inherit;
+  color: rgb(255, 106, 0);
+  border: 1px solid rgb(255, 106, 0);
+  cursor: pointer;
+  border-radius: 2px;
+  font-weight: bold;
+  opacity: 0.7;
+  }
+
+  #portfolioBoxes:hover .liveSite {
+    width: 9rem;
+    padding: 10px 25px;
+    margin-left: 15px;
+    /* background-color: white; */
+    background-color: rgb(255, 106, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: bold;
+    opacity: 0.7;
+  }
+  /* End of Buttons when portfolioBoxes hovered=when card swiped up */
+
+  /* portfolioBoxes hovered and buttons hovered */
+  #portfolioBoxes:hover .liveSite:hover{
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+    transform: scale(1.1);    
+  }
+
+  #portfolioBoxes:hover .liveCode:hover{
+    transition: all 0.2s ease-in;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  /* End of portfolioBoxes hovered and buttons hovered */
 
 
 /* Contact Me Section */
 
-.skillsEnvelopeTotal{
+.contactTotal{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
 }
-
-.envelope{
-  z-index: -1;
-    width: 11rem;
-    height: 11rem;
-    position: absolute;
-    fill: lightyellow;
-    opacity: 0.3;
-  }
 
 #contactMeText{
   color:white;
-  font-size: 3.5rem;  
+  font-size: 3rem;  
+  border-bottom: 3px solid #ffd700;
 }
 
-form{
-  background-color: rgba(166, 157, 157, 0.559);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  max-height: 90%;
-  padding: 3rem;
-  margin-bottom: 5rem;
-  margin-top: 2.5rem; 
+/* Footer Form Section */
 
+/* Socials 50% */
+.footerContainer{
+  background-color: rgb(0 0 0 / 90%);
+  padding: 3rem 0rem 1rem;
+}
+
+.socialsContainer{
+  width: 50%;
+  height: fit-content;
+  text-align: left;
+}
+
+.socialsMax{
+width: fit-content;
+margin: auto;
+}
+
+.socialsMax > h3{
+  margin: 1.5rem 0 0.5rem ;
+  text-align: left;
+}
+
+.socialsMax > p{
+  margin-bottom: 2rem ;
+  text-align: left;
+}
+
+.formSocials{
+  display: flex;
+  max-width: 1400px;
+  margin: 4rem auto 3rem
+}
+
+.info{
+  display: flex;
+}
+
+.info > span{
+  margin : auto 0;
+  height: 100%;
+  font-size: 1.5rem;
+}
+
+.info > div{
+  /* width: 6rem; */
+  border-left: 2px solid grey;
+  margin-left: 1rem;
+  padding: 1rem 0 2rem 1rem;
+}
+
+.info > div > p{
+  text-align: left;
+  padding-top: 5px;
+}
+
+.icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons > div{
+  display: flex;
+  justify-content: space-around;
+background:hsla(0, 0%, 50%, 0.8);
+width: 50px;
+height: 1px;
+}
+
+.iconsFill:hover{
+fill:#099d09
+}
+
+#iconsSpace{
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+} 
+
+/* Form 50% */
+form{
+  width: 50%;
 }
 
 .footer{
   display: grid;
   grid-template-columns:1fr 1fr;
   border-radius: 10px;
+  max-width: fit-content;
+  margin: auto;
 }
 
 .eachContactBoxName{
   padding: 0.5rem;
   grid-column: 1/2;
+  justify-self: end;
 }
 
 .eachContactBoxEmail{
   padding: 0.5rem;
   grid-column: 2/3;
+  justify-self: start;
 }
 
 .eachContactBoxSubject{
@@ -374,82 +606,75 @@ input{
   outline: none;
   font-family: inherit;
   text-align: left;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-top: 0.5rem;
+  background-color: inherit;
+  outline: 1px solid grey;
 }
 
 .InputName{
-  width: 100%;
-  padding: 1rem 1.2rem;
-  font-size: 1.5rem;
-  color: black;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
 }
 
 .InputEmail{
-  width: 100%;
-  padding: 1rem 1.2rem;
-  font-size: 1.5rem;
-  color: black;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
 }
 
 .InputSubject{
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
   width: 100%;
-  padding: 1rem 1.2rem;
-  font-size: 1.5rem;
-  color: black;
 }
-
 
 textarea{
   width: 100%;
   padding: 1.2rem;
-  font-size: 1.5rem;
-  color: black;
+  font-size: 1rem;
   border-radius: 5px;
   border: none;
   font-family: inherit;
   text-align: left;
   min-height: 10rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   outline: none;
-  margin-top: 0.5rem;
+  outline:1px solid grey;
+  background-color: inherit;
+  margin-top: 0.2rem;
 }
 
 
+    /* Form Errors */
 
-/* Form Errors */
+    .formErrors{
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 0, 0, 0.6);
+    font-weight: bold;
+    text-align: left;
+    height: 1.2rem;
+    }
 
-.formErrors{
-margin: 0;
-font-size: 1.2rem;
-color: rgb(0, 0, 0);
-font-weight: bold;
-text-align: left;
-height: 1.5rem;
-}
+    /* SendButton section */
+
+    .sendBtn{
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, 0.585);
+    padding: 0.6rem 3.5rem;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 grey;
+    transition: ease-out 0.5s;
+    background-color: inherit;
+    border: 1px solid grey;
+    }
+
+    .sendBtn:hover{
+      box-shadow: inset 10rem 0 0 0 black;
+      border: 1px solid gold;
+      color: gold;
+    }
 
 
-
-/* SendButton section */
-
-.sendBtn{
-  width: 10rem;
-font-size: 1.2rem;
-border-radius: 0.5rem;
-color:black ;
-padding: 0.6rem 0.5rem;
-background-color: white;
-border: 3px solid black;
-cursor: pointer;
-box-shadow: inset 0 0 0 0 grey;
-transition: ease-out 0.5s;
-font-weight: bold;
-}
-
-.sendBtn:hover{
-  box-shadow: inset 10rem 0 0 0 black;
-  border: 3px solid gold;
-  color: gold;
-  font-weight: bold;
+.icons{
+  margin-bottom: 1rem;
 }

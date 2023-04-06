@@ -1,27 +1,48 @@
-import './App.css';
-import React, {useRef} from 'react';
-import Typed from 'react-typed'
-import heroSite from './heroSite.jpg'
-import formProjectPic from './formProjectPic.jpg'
-import inspiredAir from './inspiredAir.jpg'
-import notesAppPic from './notesAppPic.jpg'
+ import './App.css';
+import React, {useEffect, useRef} from 'react';
+import NavBar from './navBar';
 import SkillsProp from './skillsProp';
 import AddSkills from './addSkills';
-import {FaCircle} from 'react-icons/fa';
-import {GiPlainSquare} from 'react-icons/gi';
-import {IoTriangleSharp} from 'react-icons/io5';
-import {GrMail} from 'react-icons/gr';
+import inspiredAir from './inspiredAir.jpg'
+import formUpdated from './formUpdated.jpg'
+import portfolioCurrent from './portfolioCurrent.jpg'
+import primeLocation from './primeLocation.jpg'
+import ShiftTracker from './shiftTracker.jpg'
+import Programming from './programming.jpeg'
+import {GoPrimitiveDot} from 'react-icons/go';
+import {FaUserTie,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
+import {ImLocation2} from 'react-icons/im';
 import {HiOutlineMenu} from 'react-icons/hi';
+import Typed from 'react-typed'
 import emailjs from '@emailjs/browser';
-import userEvent from '@testing-library/user-event';
-import NavBar from './navBar';
-
 
 function App() {
 
-  const [isShown, setIsShown] = React.useState(false);
-  const [isShown2, setIsShown2] = React.useState(false);
-  const [isShown3, setIsShown3] = React.useState(false);
+//Scrolling Nav color change
+const [bgNavColor, setBgNavColor] = React.useState(false);
+
+// Mobile Nav Menu
+const [openBurgMenu, setOpenBurgerMenu]= React.useState(false)
+
+// erorrs in form added to state
+const [formErrors, setFormErrors] = React.useState([])
+
+// isSubmit triggered when form completed successfully 
+const [isSubmit, setIsSubmit] = React.useState(false)  
+
+
+function ChangeBgColor(){
+  if (window.scrollY>=130){
+    setBgNavColor(true)
+  }
+  else{
+    setBgNavColor(false)
+  }
+}
+
+window.addEventListener("scroll", ChangeBgColor )
+
+// Click NavBar Items to scroll to page sections
 
 let aboutSection = useRef(null)
 let techStackSection = useRef(null)
@@ -52,7 +73,7 @@ function goToContactSection (){
   })
   }
 
-// SEND EMAIL FUNCTION
+// Send Email Functions
 
 const [formData, setFormData] = React.useState({
   name: "",
@@ -69,11 +90,8 @@ function handleChange(event) {
   }))
 }
 
+// UseEffect start to validate Form
 const form= useRef()
-
-const [formErrors, setFormErrors] = React.useState([])
-const [isSubmit, setIsSubmit] = React.useState(false)
-
 
 React.useEffect(() => {
 if (Object.keys(formErrors).length === 0 && isSubmit){
@@ -90,9 +108,7 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
     (error) => {
     console.log(error.text);
   })
-
-console.log("email sent!")
-
+// Clear Input fields after message sent
   setFormData({
     name: "",
     user_email:"",
@@ -101,42 +117,45 @@ console.log("email sent!")
   })
 
 }
-
 },[formErrors])
 
+// UseEffect End
 
-function sendEmail(e){
-  e.preventDefault()
 
-if (validate(formData)){
-setIsSubmit(true)
-setFormErrors(validate(formData))
-e.target.reset()
-  }
-}
+  // Validate input each input field 
+  function sendEmail(e){
+    e.preventDefault()
 
-function validate (values){
-  const errors= {}
-  if (values.name.length===0){
-    errors.name= "*Name is required"
+  if (validate(formData)){
+  setIsSubmit(true)
+  setFormErrors(validate(formData))
+  e.target.reset()
+    }
   }
 
-  if (values.user_email.length===0){
-    errors.user_email= "*Email is required"
-  }
+  function validate (values){
+    const errors= {}
+    if (values.name.length===0){
+      errors.name= "*Name is required"
+    }
 
-  if (values.subject.length===0){
-    errors.subject= "*Subject is required"
-  }
- 
-  if (values.message.length===0){
-    errors.message= "*Message is required"
-  }
-return errors
-}
+    if (values.user_email.length===0){
+      errors.user_email= "*Email is required"
+    }
 
+    if (values.subject.length===0){
+      errors.subject= "*Subject is required"
+    }
+  
+    if (values.message.length===0){
+      errors.message= "*Message is required"
+    }
+  return errors
+  }
 // END OF SUBMIT EMAIL
 
+
+// mapped function to render each skill in skills section
   let eachSkill = AddSkills.map(skills => {
     return (
           <div>
@@ -148,21 +167,22 @@ return errors
     )
   })
 
-  const [openBurgMenu, setOpenBurgerMenu]= React.useState(false)
-
   return (
     <div>
-
-<div className='navBar'>
-           <div className='bm'><h3>BM</h3></div>
-           <HiOutlineMenu className='hamburgerMenu' onClick={() => setOpenBurgerMenu(!openBurgMenu) } />
+    {/* navBar section Start */}
+    <div className={bgNavColor ? 'navBarScroll' : 'navBar' }>
+           <div className='bm'>
+            <h3 className={bgNavColor? "bmH3Scroll":""}>BM</h3>
+            <span><GoPrimitiveDot style={{fill:'gold'}}/></span>
+           </div>
+          <HiOutlineMenu className='hamburgerMenu' onClick={() => setOpenBurgerMenu(!openBurgMenu) } />
           <div>
             <div>
               <ul className='navBarItems'>
-              <li><a onClick={goToAboutSection} className='eachNav'> About </a></li>
-              <li><a onClick={goToTechStackSection} className='eachNav'> Skills </a></li>
-              <li><a onClick={goToPortfolioSection} className='eachNav'> Portfolio </a></li>
-              <li><a onClick={goToContactSection} className='eachNav'> Contact </a></li>
+              <li><a onClick={goToAboutSection} className={bgNavColor? "eachNavScroll":"eachNav"}> About </a></li>
+              <li><a onClick={goToTechStackSection} className={bgNavColor? "eachNavScroll":"eachNav"}> Skills </a></li>
+              <li><a onClick={goToPortfolioSection} className={bgNavColor? "eachNavScroll":"eachNav"}> Portfolio </a></li>
+              <li><a onClick={goToContactSection} className={bgNavColor? "eachNavScroll":"eachNav"}> Contact </a></li>
               </ul>
             </div>
             
@@ -180,54 +200,68 @@ return errors
             </div>
 
           </div>
-        </div>
+    </div>
+    {/* navBar section End */}
 
+  
+    <div className='container'>
+        {/* Full height/width hero section  */}
+        <div className='backgroundOverlay'>
+        <div className='contentContainer'>
+          <div className="content1">
 
-      <div className='container'>
+              <Typed className='contentTyped'
+                  strings={[
+                    "Hi, I'm <span id='heroName'>Bilal Musa</span><br/>A Frontend Web Developer"]}
+                  typeSpeed={60}
+                  backSpeed={30}
+                  loop
+                  loopCount={2}
+                  />
 
-      <div className='contentContainer'>
-        <div className="content1">
-          <h2>Hi! I'm <span id='heroName'>Bilal Musa</span><br/>
-          A Frontend Web Developer
-          </h2>
-          <div>
-          <a onClick={goToContactSection}>
-            <button className='contactMeHero'>
-                Contact Me
-            </button>
-          </a>
+            <div className='contactMeBtnContainer'>
+            <a onClick={goToContactSection}>
+              <button className='contactMeHero'>
+                  Contact Me
+              </button>
+            </a>
+            </div>
           </div>
         </div>
-        <div className="content2">
-          <img src={heroSite} className='heroSiteImg' />
-        </div>
       </div>
-
-        <div>
-            <div className='aboutSquare' ref={aboutSection}>
-              <IoTriangleSharp className='triangle' />
-              <h2 id='aboutText'>About</h2>
+      {/* End of hero section */}
+      
+      {/* Start of About section */}
+        <div className='aboutContainer'>
+            <div className='about' ref={aboutSection}>
+              <h2 id='aboutText'>About Me</h2>
             </div>
-            <div>
-              <div className='typed'>
-               <Typed className='typedAbout'
-                  strings={[
-                    "Hi, My name is Bilal!"
-                  ]}
-                  typeSpeed={90}
-                  backSpeed={50}
-                  loop
-                  />
+            <div className='aboutInfoContainter'>
+              <div className='about40'>
+                <div className='picContainer'>
+                  <img src={Programming} id="programmingPic"/>
+                </div>
               </div>
-             <p id='aboutInfo'> I am a passionate front end web developer based in the UK,
-             that's focused on creating high quality, eye-catching web applications,
-             offering a seamless end user experience.</p>
+              <div className='about60'>
+                <p id='aboutInfo'> 
+                Hey there, Im Bilal and I'm a motivated, passionate front-end web developer based in the UK! I enjoy creating awesome, eye-catching web applications that offer a seamless end experience for users. 
+                <br/><br/>
+                Let me tell you, learning to code was no walk in the park, but it definitely has been rewarding. <br/><br/>
+                I'm at a point where I can build multipage websites with my HTML and CSS skills, and I've spent time exercising my JavaScript skills, including working 
+                with APIs and getting comfortable with object-oriented programming and DOM manipulation. <br/><br/>
+                As this is an ever-evolving and adapting industry, I've kept my skills up-to-date by learning and using frameworks and tools including React.js, Next.js
+                and Styled components. <br/><br/>
+                Basically , being a developer allows me to continuously learn and improve myself, and <span style={{color:"gold", fontWeight:"bold", fontSize:"1.1rem"}}>I love that!</span>
+
+                </p>
+              </div>
             </div>
         </div>
+      {/* End of About section */}
 
-    <div>
-      <div className='skillsCircleTotal' ref={techStackSection}>
-        <FaCircle className='faCircle'/>
+    {/* Start of skills section */}
+    <div className='skillsContainer'>
+      <div className='skillsTotal' ref={techStackSection}>
         <h2 id='techStackText'>Skill Stack</h2>
       </div>
       <div className='totalSkills'>
@@ -236,64 +270,141 @@ return errors
         </div>
       </div>
     </div>
+    {/* End of About section */}
+    
 
-        <div>
+      {/* Start of Portfolio section */}    
+      <div className='portfolioContainer'>
           <div className='portfolio' ref={portfolioSection}>
-            <GiPlainSquare className='square'/>
             <h2 id='portfolioText'>Portfolio</h2>
           </div>
 
           <div className='eachProject'>
 
             <div id='portfolioBoxes'>
-              <div className='image'
-              onMouseEnter={() => setIsShown(true)}
-              onMouseLeave={() => setIsShown(false)}
-              >
-              <img src={notesAppPic} className='portfolioImages' />
-                <div className={!isShown ? 'portfolioBoxesTitle' : 'portfolioBoxesTitleClear'}>
-                  Dynamic Notes App
+              <div className='image'>
+              <img src={ShiftTracker} className='portfolioImages' />
+                <div className='portfolioBoxesOverlay'>
+                <h2>Shift Tracker</h2>
+                <p>-Implemented main features of CRUD app</p>
+                <p>-Created custom website to track all self employed workers shifts in a systematic format</p>
+                <p>-Through input of shift details, it calculates Tax Amount, Total Amount Received and Total After Tax</p>
+                <p>-Top modal keeps running total of all key values and dynamically changes when each shift is added, making tasks such as end of year tax calculations easier</p>
+                  <div className='overlayBtns'>
+                    <button className='liveCode'>Source Code</button>
+                    <button className='liveSite'>Live Site</button>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div id='portfolioBoxes'>
-              <div className='image'
-              onMouseEnter={() => setIsShown2(true)}
-              onMouseLeave={() => setIsShown2(false)}
-              >
-              <img src={formProjectPic} className='portfolioImages' />
-                <div className={!isShown2 ? 'portfolioBoxesTitle' : 'portfolioBoxesTitleClear'}>
-                  Sign Up
+              <img src={formUpdated} className='portfolioImages' />
+                <div className='portfolioBoxesOverlay'>
+                  <h2>GIT Registration</h2>
+                  <p>- Built a form that receives user inputs and validates them in order to progress to form submission</p>
+                  <p>-Form features include Controlled components, Validation, Conditional rendering based on user input and handling form submission</p>
+                  <p>-Upon successful completion "Submit" button appears and once clicked pop up emerges showing successful completion and "Download" button for GIT cheatsheet </p>
+                  <div className='overlayBtns'>
+                    <button className='liveCode'>Source Code</button>
+                    <button className='liveSite'>Live Site</button>
+                  </div>
+                </div>
+            </div>
+
+            <div id='portfolioBoxes'>
+              <div className='image'>
+              <img src={primeLocation} className='portfolioImages' />
+                <div className='portfolioBoxesOverlay'>
+                <h2>Prime Location</h2>
+                <p>-Property Website made using HTML CSS and React </p>
+                <p>-Slider function implemented through import of NPM React slider </p>
+                <p>-Ability to filter properties through price and/or search bar depending on location and sort individual properties depending on price</p>
+                <p>-Viewing preference adjustable through grid or list view. </p>
+                  <div className='overlayBtns'>
+                    <button className='liveCode'>Source Code</button>
+                    <button className='liveSite'>Live Site</button>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div id='portfolioBoxes'>
-              <div className='image'
-              onMouseEnter={() => setIsShown3(true)}
-              onMouseLeave={() => setIsShown3(false)}
-              >
+              <div className='image'>
               <img src={inspiredAir} className='portfolioImages' />
-                <div className= {!isShown3 ? 'portfolioBoxesTitle' : 'portfolioBoxesTitleClear'}>
-                  Airbnb Inspired Site
+                <div className='portfolioBoxesOverlay'>
+                <h2>Modified Airbnb </h2>
+                <p>-Built a modified, responsive Airbnb website using React.js, HTML, and CSS</p>
+                <p>First instance in using "props" to implement in other functions</p>
+                <p>-Implemented features such as product search, clickable “Like” feature, day and night toggle mode and reusable React components</p>
+                <p>-Used React Router to route to new page with new components and styling</p>
+                  <div className='overlayBtns'>
+                    <button className='liveCode'>Source Code</button>
+                    <button className='liveSite'>Live Site</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id='portfolioBoxes'>
+              <div className='image'>
+              <img src={portfolioCurrent} className='portfolioImages' />
+                <div className='portfolioBoxesOverlay' style={{bottom:"1px"}}>
+                <h2>Portfolio</h2>
+                <p>-Portfolio site made using React</p>
+                <p>-Utilised React hooks such as useEffect, useState and useRef </p>
+                <p>-When all form fields are satisfied, Emailjs was used to send contact message from user</p>
+                <p>-Used class based components to dynamically change Navbar upon scroll</p>
+                <div className='overlayBtns'>
+                    <button className='liveCode'>Source Code</button>
+                    <button className='liveSite'>Live Site</button>
+                  </div>
                 </div>
               </div>
             </div>
 
           </div>
-        </div>
+
+      </div>
+      {/* End of About section */}
+
 
       {/* Contact Section   */}
-
         <div className='footerContainer' ref={contactSection}>
 
-            <div className='skillsEnvelopeTotal'>
-                <GrMail className='envelope'/>
+            <div className='contactTotal'>
                 <h2 id='contactMeText'>Contact Me</h2>
             </div>
 
-              <form ref={form} onSubmit={sendEmail}>
+
+          <div className='formSocials'>
+
+            <div className='socialsContainer'>
+            <div className='socialsMax'>
+              <h3>Contact Info</h3>
+              <p  style={{color:"grey"}}>Open for work opportunities. Let's connect!</p>
+              <div>
+                <div className='info'>
+                  <span><FaUserTie style={{fill:'green',fontSize:"2rem"}} /></span>
+                  <div>
+                    <p  style={{fontWeight:"600"}}>Name</p>
+                    <p style={{fontWeight:"300", color:'grey'}}>Bilal Musa</p>
+                  </div>
+                </div>
+                <div className='info'>
+                  <span><ImLocation2 style={{fill:'green',fontSize:"2rem"}} /></span>
+                  <div>
+                    <p style={{fontWeight:"600"}}>Location</p>
+                    <p style={{fontWeight:"300", color:'grey'}}>Lancashire, UK</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+
+            </div>
+
+            <form ref={form} onSubmit={sendEmail}>
                 <div className='footer'>
 
                   <div className='eachContactBoxName'>
@@ -319,21 +430,32 @@ return errors
                     <textarea placeholder='Message' name="message" onChange={handleChange} value={formData.message}>
                     </textarea>
                   </div>
-                  {/* className={formErrors.message ? 'formErrorsTransparent' : "formErrors"} */}
                 </div>
                 <button className='sendBtn' type='submit' value="send">Send</button>
-              {Object.keys(formErrors).length === 0 && isSubmit ?
-              <p>Message Sent</p>:""
-              }
-              </form>
+
+                {Object.keys(formErrors).length === 0 && isSubmit ? <p>Message Sent</p> : "" }
+
+            </form>
+          </div>
+
+        {/* Footer Icons*/}
+          <div className='icons'>
+            <div id='iconsSpace'></div>
+            <a><FaGithub id='iconsSpace' className='iconsFill' /></a>
+            <a><FaLinkedin id='iconsSpace' className='iconsFill'/></a>
+            <a><FaTwitter id='iconsSpace' className='iconsFill'/></a>
+            <div id='iconsSpace'></div>
+          </div>
+          
+          <div style={{fontSize:"0.8rem"}}>
+            <p>Site developed by Bilal Musa </p>
+            <p>Copyright © 2023</p>
+          </div>
 
         </div>
 
     </div>
       {/* END OF CONTAINER */}
-
-
-
 
     </div>
   );
