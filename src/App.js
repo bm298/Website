@@ -244,14 +244,14 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
               </div>
               <div className='about60'>
                 <p id='aboutInfo'> 
-                Hey there, Im Bilal and I'm a motivated, passionate front-end web developer based in the UK! I enjoy creating awesome, eye-catching web applications that offer a seamless end experience for users. 
+                Hey there Im Bilal, a motivated, passionate front-end web developer based in the UK! I enjoy creating awesome, eye-catching web applications that offer a seamless end experience for users. 
                 <br/><br/>
                 Let me tell you, learning to code was no walk in the park, but it definitely has been rewarding. <br/><br/>
                 I'm at a point where I can build multipage websites with my HTML and CSS skills, and I've spent time exercising my JavaScript skills, including working 
                 with APIs and getting comfortable with object-oriented programming and DOM manipulation. <br/><br/>
                 As this is an ever-evolving and adapting industry, I've kept my skills up-to-date by learning and using frameworks and tools including React.js, Next.js
                 and Styled components. <br/><br/>
-                Basically , being a developer allows me to continuously learn and improve myself, and <span style={{color:"gold", fontWeight:"bold", fontSize:"1.1rem"}}>I love that!</span>
+                Basically , being a developer allows me to continuously learn and improve myself, and <span style={{color:"gold", fontWeight:"500", fontSize:"1.1rem"}}>I love that!</span>
 
                 </p>
               </div>
@@ -291,8 +291,8 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                 <p>-Through input of shift details, it calculates Tax Amount, Total Amount Received and Total After Tax</p>
                 <p>-Top modal keeps running total of all key values and dynamically changes when each shift is added, making tasks such as end of year tax calculations easier</p>
                   <div className='overlayBtns'>
-                    <button className='liveCode'>Source Code</button>
-                    <button className='liveSite'>Live Site</button>
+                   <a href='https://github.com/bm298/shiftTracker' target="_blank"> <button className='liveCode'>Source Code</button> </a>
+                    <a href='https://bm298.github.io/shiftTracker/' target="_blank"> <button className='liveSite'>Live Site</button> </a>
                   </div>
                 </div>
               </div>
@@ -306,8 +306,8 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                   <p>-Form features include Controlled components, Validation, Conditional rendering based on user input and handling form submission</p>
                   <p>-Upon successful completion "Submit" button appears and once clicked pop up emerges showing successful completion and "Download" button for GIT cheatsheet </p>
                   <div className='overlayBtns'>
-                    <button className='liveCode'>Source Code</button>
-                    <button className='liveSite'>Live Site</button>
+                   <a href='https://github.com/bm298/FormUpdate' target="_blank"> <button className='liveCode'>Source Code</button> </a>
+                   <a href='https://bm298.github.io/FormUpdate/' target="_blank"> <button className='liveSite'>Live Site</button> </a>
                   </div>
                 </div>
             </div>
@@ -322,8 +322,8 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                 <p>-Ability to filter properties through price and/or search bar depending on location and sort individual properties depending on price</p>
                 <p>-Viewing preference adjustable through grid or list view. </p>
                   <div className='overlayBtns'>
-                    <button className='liveCode'>Source Code</button>
-                    <button className='liveSite'>Live Site</button>
+                   <a href='https://github.com/bm298/primeLocation' target="_blank"> <button className='liveCode'>Source Code</button> </a>
+                   <a href='https://bm298.github.io/primeLocation/' target="_blank"> <button className='liveSite'>Live Site</button> </a>
                   </div>
                 </div>
               </div>
@@ -339,8 +339,8 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                 <p>-Implemented features such as product search, clickable “Like” feature, day and night toggle mode and reusable React components</p>
                 <p>-Used React Router to route to new page with new components and styling</p>
                   <div className='overlayBtns'>
-                    <button className='liveCode'>Source Code</button>
-                    <button className='liveSite'>Live Site</button>
+                   <a href='https://github.com/bm298/airbnbSite' target="_blank"> <button className='liveCode'>Source Code</button> </a>
+                   <a href='https://bm298.github.io/airbnbSite/' target="_blank"> <button className='liveSite'>Live Site</button> </a>
                   </div>
                 </div>
               </div>
@@ -356,8 +356,8 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                 <p>-When all form fields are satisfied, Emailjs was used to send contact message from user</p>
                 <p>-Used class based components to dynamically change Navbar upon scroll</p>
                 <div className='overlayBtns'>
-                    <button className='liveCode'>Source Code</button>
-                    <button className='liveSite'>Live Site</button>
+                <a href='https://github.com/bm298/Website' target="_blank"> <button className='liveCode'>Source Code</button> </a>
+                <a href='https://bm298.github.io/Website/' target="_blank"> <button className='liveSite'>Live Site</button> </a>
                   </div>
                 </div>
               </div>

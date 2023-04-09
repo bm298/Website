@@ -27,7 +27,7 @@ export default [
 },
 {
     skillPic: 'tbc.png',
-    skillName:"More to follow...",
+    skillName:"Next js",
 },
 
 ]
