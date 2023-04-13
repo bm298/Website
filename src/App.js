@@ -353,7 +353,7 @@ if (Object.keys(formErrors).length === 0 && isSubmit){
                 <h2>Portfolio</h2>
                 <p>-Portfolio site made using React</p>
                 <p>-Utilised React hooks such as useEffect, useState and useRef </p>
-                <p>-When all form fields are satisfied, Emailjs was used to send contact message from user</p>
+                <p>-When all form fields are satisfied, Email.js was used to send contact message from user</p>
                 <p>-Used class based components to dynamically change Navbar upon scroll</p>
                 <div className='overlayBtns'>
                 <a href='https://github.com/bm298/Website' target="_blank"> <button className='liveCode'>Source Code</button> </a>
