@@ -348,12 +348,13 @@ margin: 0.7rem
 
 #portfolioBoxes:hover .liveCode {
 font-size: 1rem;
+padding: 0.5rem 0;
 }
 
 #portfolioBoxes:hover .liveSite {
-    font-size: 1rem;
-    padding: 0.5rem 0;
-    }
+font-size: 1rem;
+padding: 0.5rem 0;
+}
 
 /* footer section */
 
